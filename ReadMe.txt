@@ -7,4 +7,4 @@
 使用的版本是Unity2017
 
  
-![PNG]https://github.com/Haruho/StitchOn/blob/master/SpriteCreat.png
+![PNG](https://github.com/Haruho/StitchOn/blob/master/SpriteCreat.png)
