@@ -13,6 +13,7 @@ public class Mannger : MonoBehaviour {
     public GameObject restartWindow;
     public GameObject winWindow;
     private float speed;
+    public GameObject inc;
     private void Awake()
     {
         winWindow.SetActive(false);
@@ -25,14 +26,18 @@ public class Mannger : MonoBehaviour {
         speed = 0.37f * LevelMannger.levelNumber + 4.63f;
 
         winWindow.SetActive(false);
-
+        if (LevelMannger.levelNumber == 1)
+        {
+            Time.timeScale = 0;
+            inc.SetActive(true);
+        }
     }
 	
 	// Update is called once per frame
 	void Update () {
         needleNumberText.text = needleNumber.ToString();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && winWindow.activeSelf == false)
         {
             NeedleBehaviour.speed =speed;
         }
@@ -47,7 +52,7 @@ public class Mannger : MonoBehaviour {
             restartWindow.SetActive(false);
         }
 
-        if (needleNumber >=2)
+        if (needleNumber >=10)
         {
             winWindow.SetActive(true);
         }
@@ -70,7 +75,16 @@ public class Mannger : MonoBehaviour {
         //lm.beClear.Add(ts.levelButton[LevelMannger.levelNumber + 1])
 
         LevelMannger.levelNumber++;
+        needleNumber = 0;
 
-        SceneManager.LoadScene(1);
+        // SceneManager.LoadSceneAsync(1);
+        PlayerPrefs.SetInt("levelnumber",LevelMannger.levelNumber);
+     SceneManager.LoadScene(1);
+    }
+
+    public void FirstInc()
+    {
+        inc.SetActive(false);
+        Time.timeScale = 1;
     }
 }

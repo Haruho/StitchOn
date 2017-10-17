@@ -30,6 +30,12 @@ public class TitleScene : MonoBehaviour {
     private int difficultCoefficient;
     // Use this for initialization
     void Start () {
+
+        LevelMannger.levelNumber = PlayerPrefs.GetInt("levelnumber");
+        if (PlayerPrefs.GetInt("levelnumber") == 0)
+        {
+            LevelMannger.levelNumber = 1;
+        }
         lm = new LevelMannger();
         levelNumber = LevelMannger.levelNumber;
         for (int i = 0;i<levelButton.Count;i++)
@@ -65,4 +71,12 @@ public class TitleScene : MonoBehaviour {
         }
 
     }
+    public void Quit()
+    {
+        
+        Application.Quit();
+
+    }
+
+
 }
